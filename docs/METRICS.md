@@ -37,7 +37,7 @@ P_{\text{adj}} = P \cdot \frac{\text{CPI}(\text{база})}{\text{CPI}(t)}
 кода ЕНС ТРУ) и области:
 
 ```math
-K_{\text{рег}} = 1 + \bigl(\operatorname{median}(r) - 1\bigr) \cdot \frac{n}{n + 20}, \qquad
+K_{\text{рег}} = 1 + \left(\mathrm{median}(r) - 1\right) \cdot \frac{n}{n + 20}, \qquad
 r = \frac{P_{\text{adj}}}{\text{медиана цены по своему ЕНС ТРУ}}
 ```
 
@@ -47,7 +47,7 @@ r = \frac{P_{\text{adj}}}{\text{медиана цены по своему ЕНС
 **Шаг 4. Справедливая цена в условиях цели:**
 
 ```math
-\text{FairPrice} = \operatorname{median}\bigl(\tilde{P}_i\bigr) \cdot K_{\text{рег}}(o) \cdot K_{\text{сез}}(m) \cdot \frac{\text{CPI}(t)}{\text{CPI}(\text{база})}
+\text{FairPrice} = \mathrm{median}\left(\tilde{P}_i\right) \cdot K_{\text{рег}}(o) \cdot K_{\text{сез}}(m) \cdot \frac{\text{CPI}(t)}{\text{CPI}(\text{база})}
 ```
 
 Интервал справедливости — от Q1 до Q3 тех же приведённых цен аналогов. Рядом показывается средневзвешенная
@@ -86,7 +86,7 @@ r = \frac{P_{\text{adj}}}{\text{медиана цены по своему ЕНС
 Позиция считается аномальной, если $\Delta_i$ больше порога (по умолчанию 30%). Дополнительные индикаторы:
 
 ```math
-z_i = \frac{P_{\text{adj},\,i} - \operatorname{median}}{1.4826 \cdot \text{MAD}}, \qquad
+z_i = \frac{P_{\text{adj},\,i} - \mathrm{median}}{1.4826 \cdot \text{MAD}}, \qquad
 \text{выброс по IQR: } P_{\text{adj},\,i} > Q_3 + 1.5 \cdot \text{IQR}
 ```
 
@@ -101,7 +101,7 @@ z_i = \frac{P_{\text{adj},\,i} - \operatorname{median}}{1.4826 \cdot \text{MAD}}
 Для пары «заказчик + код ЕНС ТРУ» и целевого года $Y$:
 
 ```math
-R = \frac{Q_Y}{\operatorname{median}\left(Q_{\text{прошлые годы}}\right)}, \qquad
+R = \frac{Q_Y}{\mathrm{median}\left(Q_{\text{прошлые годы}}\right)}, \qquad
 R_{\text{adj}} = \frac{R}{\max\left(R_{\text{коллеги}},\, 1\right)}
 ```
 
