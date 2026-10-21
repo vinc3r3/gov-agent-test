@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+data/
+.DS_Store
+
+# задание от компании — не публикуем
+*.docx

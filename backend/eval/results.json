@@ -1,0 +1,476 @@
+{
+ "summary": {
+  "n_questions": 17,
+  "n_answered": 17,
+  "n_api_errors": 0,
+  "n_facts": 27,
+  "fact_accuracy": 1.0,
+  "verdict_fact_accuracy": 0.8148148148148148,
+  "type_accuracy": 1.0,
+  "type_accuracy_strict": 0.8823529411764706,
+  "verdict_hallucination_rate": 0.0,
+  "avg_latency_s": 31.376470588235293,
+  "models": [
+   "gemini-3-flash-preview",
+   "gemini-3.5-flash-lite",
+   "gemini-3.6-flash",
+   "gemini-3.8-flash"
+  ]
+ },
+ "results": [
+  {
+   "id": "sum_customer_2025",
+   "question": "Какова общая сумма договоров заказчика с БИН 990740002243 за 2025 год и сколько это договоров?",
+   "expected_type": "analytics",
+   "got_type": "analytics",
+   "facts": [
+    {
+     "name": "total_sum",
+     "gt": 11603841720.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "n_contracts",
+     "gt": 1902.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "bin",
+     "gt": "990740002243",
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "В 2025 году заказчик с БИН 990740002243 (РГП «Больница МЦ УДП РК») заключил 1 902 договора (5 693 позиции) на общую сумму 11 603 841 720 тенге.",
+   "unverified_numbers": [],
+   "latency_s": 27.11,
+   "tools": [
+    "aggregate",
+    "run_sql"
+   ],
+   "error": null,
+   "answer_id": "2322e9b2-cd9d-4783-8491-0971eb248940",
+   "model": "gemini-3.8-flash"
+  },
+  {
+   "id": "sum_customer_2025_kk",
+   "question": "БСН 990740002243 тапсырыс берушінің 2025 жылғы шарттарының жалпы сомасы қанша?",
+   "expected_type": "analytics",
+   "got_type": "analytics",
+   "facts": [
+    {
+     "name": "total_sum",
+     "gt": 11603841720.0,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "БСН 990740002243 тапсырыс берушісінің («ҚР ПІБ МБ Ауруханасы» РМК) 2025 жылғы шарттарының жалпы сомасы 11 603 841 720 теңгені құрады. Барлығы 1 902 шарт бойынша 5 693 позиция тіркелген.",
+   "unverified_numbers": [],
+   "latency_s": 17.6,
+   "tools": [
+    "aggregate"
+   ],
+   "error": null,
+   "answer_id": "2e67db6c-08bf-4f22-b707-05bb5b9b6a5d",
+   "model": "gemini-3.8-flash"
+  },
+  {
+   "id": "count_contracts_2024",
+   "question": "Сколько договоров заключил заказчик 020440003656 в 2024 году и на какую сумму?",
+   "expected_type": "analytics",
+   "got_type": "analytics",
+   "facts": [
+    {
+     "name": "n_contracts",
+     "gt": 637.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "total_sum",
+     "gt": 7255991311.37,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "В 2024 году заказчик РГП на ПХВ «Дирекция административных зданий Администрации Президента и Правительства РК» УДП РК (БИН 020440003656) заключил 678 договоров на общую сумму 7 267 471 691,64 ₸ (по детализированным позициям — 637 договоров с 3 010 позициями на сумму 7 255 991 311,37 ₸).",
+   "unverified_numbers": [],
+   "latency_s": 27.93,
+   "tools": [
+    "aggregate",
+    "run_sql",
+    "run_sql"
+   ],
+   "error": null,
+   "answer_id": "9b9414ba-381a-4da4-acc1-2b2ae086faa5",
+   "model": "gemini-3.8-flash"
+  },
+  {
+   "id": "compare_two",
+   "question": "Сравни суммы договоров заказчиков 990740002243 и 020440003656 за 2025 год",
+   "expected_type": "comparison",
+   "got_type": "comparison",
+   "facts": [
+    {
+     "name": "sum_a",
+     "gt": 11603841720.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "sum_b",
+     "gt": 4963644023.0,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "В 2025 году сумма договоров РГП «Больница МЦ УДП РК» составила 11 603 841 720 тенге (1 902 договора), а РГП «Дирекция административных зданий АП и Правительства РК» — 4 963 644 023 тенге (681 договор). Общая сумма проанализированных позиций по двум заказчикам составила 16 567 485 743 тенге.",
+   "unverified_numbers": [],
+   "latency_s": 6.99,
+   "tools": [
+    "aggregate"
+   ],
+   "error": null,
+   "answer_id": "87d032c8-25fb-4d76-8fa8-d3bf7f7d6cc5",
+   "model": "gemini-3-flash-preview"
+  },
+  {
+   "id": "top_customer_2026",
+   "question": "Какой заказчик потратил больше всего по договорам в 2026 году?",
+   "expected_type": "comparison",
+   "got_type": "comparison",
+   "facts": [
+    {
+     "name": "top_bin",
+     "gt": "960440000220",
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "top_sum",
+     "gt": 42597663816.78,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "Больше всего по договорам в 2026 году потратило Государственное учреждение \"Медицинский центр Управления Делами Президента Республики Казахстан\" (БИН 960440000220), общая сумма расходов составила 42 597 663 816.78 тенге, что составляет 49.42% от общего объема среди 27 организаций.",
+   "unverified_numbers": [],
+   "latency_s": 16.86,
+   "tools": [
+    "aggregate"
+   ],
+   "error": null,
+   "answer_id": "112db273-8e92-4c18-93c0-e54426fad77c",
+   "model": "gemini-3.5-flash-lite"
+  },
+  {
+   "id": "top_supplier_2025",
+   "question": "Какой поставщик получил больше всего договоров в 2025 году?",
+   "expected_type": "analytics",
+   "got_type": "analytics",
+   "facts": [
+    {
+     "name": "supplier_bin",
+     "gt": "840503301245",
+     "found": true,
+     "in_verdict": false
+    },
+    {
+     "name": "n_positions",
+     "gt": 882.0,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "В 2025 году больше всего договоров (882 позиции, 53 договора на общую сумму 72 096 524 тенге) получил поставщик ШАХМАНОВ АЗАМАТ МЕЙРАМОВИЧ.",
+   "unverified_numbers": [],
+   "latency_s": 7.41,
+   "tools": [
+    "aggregate"
+   ],
+   "error": null,
+   "answer_id": "4dd68c2f-207c-46ac-b685-57d1f25a5135",
+   "model": "gemini-3.5-flash-lite"
+  },
+  {
+   "id": "diesel_search",
+   "question": "Найди договоры на дизельное топливо (ЕНС ТРУ 192026.510.000000) за 2025 год: сколько позиций и на какую сумму?",
+   "expected_type": "search",
+   "got_type": "search",
+   "facts": [
+    {
+     "name": "n_positions",
+     "gt": 38.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "total_sum",
+     "gt": 921941252.33,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "В 2025 году по коду ЕНС ТРУ 192026.510.000000 (дизельное топливо) найдено 38 позиций в 37 договорах на общую сумму 921 941 252,33 тенге. Средневзвешенная цена составила 282 тенге за литр.",
+   "unverified_numbers": [],
+   "latency_s": 4.47,
+   "tools": [
+    "search_procurements"
+   ],
+   "error": null,
+   "answer_id": "5b97c266-b033-4a35-a597-902d3975f8e1",
+   "model": "gemini-3-flash-preview"
+  },
+  {
+   "id": "diesel_wavg",
+   "question": "Какова средневзвешенная цена за литр дизельного топлива (ЕНС ТРУ 192026.510.000000) по договорам 2025 года?",
+   "expected_type": "analytics",
+   "got_type": "search",
+   "facts": [
+    {
+     "name": "wavg",
+     "gt": 282.0013126028934,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "Средневзвешенная цена за литр дизельного топлива (ЕНС ТРУ 192026.510.000000) по 38 позициям договоров 2025 года составила 282,00 тенге. При этом медианная цена зафиксирована на уровне 283,44 тенге за литр.",
+   "unverified_numbers": [],
+   "latency_s": 5.52,
+   "tools": [
+    "search_procurements"
+   ],
+   "error": null,
+   "answer_id": "9e4949b9-36b4-4365-a2d6-fd96fb98ca89",
+   "model": "gemini-3-flash-preview"
+  },
+  {
+   "id": "top_month_2025",
+   "question": "В каком месяце 2025 года сумма заключённых договоров была максимальной?",
+   "expected_type": "analytics",
+   "got_type": "analytics",
+   "facts": [
+    {
+     "name": "month",
+     "gt": "2025-11",
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "В 2025 году максимальная сумма заключённых договоров пришлась на ноябрь (2025-11) и составила 32 293 319 178,69 тенге, что составляет 38,3% от общего объёма за год. Вторым по величине стал январь с суммой 15 363 456 743,89 тенге.",
+   "unverified_numbers": [],
+   "latency_s": 9.37,
+   "tools": [
+    "aggregate"
+   ],
+   "error": null,
+   "answer_id": "cedb092a-c572-4a17-a965-9dacb90e6c4a",
+   "model": "gemini-3-flash-preview"
+  },
+  {
+   "id": "lots_count",
+   "question": "Сколько лотов опубликовал заказчик 000740001307 за всё время в хранилище?",
+   "expected_type": "analytics",
+   "got_type": "search",
+   "facts": [
+    {
+     "name": "n_lots",
+     "gt": 5431.0,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "Заказчик с БИН 000740001307 опубликовал 5431 лот за всё время в хранилище (по данным таблицы core.lot).",
+   "unverified_numbers": [],
+   "latency_s": 24.7,
+   "tools": [
+    "run_sql"
+   ],
+   "error": null,
+   "answer_id": "bb76eb9e-1c0a-425a-93d0-1b79cc10b7e7",
+   "model": "gemini-3.5-flash-lite"
+  },
+  {
+   "id": "anomaly_all",
+   "question": "Найди закупки с отклонением цены > 30% от средневзвешенной по данному ЕНСТРУ",
+   "expected_type": "anomaly",
+   "got_type": "anomaly",
+   "facts": [
+    {
+     "name": "n_flagged",
+     "gt": 17077.0,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "Выявлено 17 077 позиций (32,5% от проанализированных) с отклонением цены более 30% от средневзвешенной, на общую сумму потенциального завышения 12,07 млрд тенге. Наиболее крупные отклонения зафиксированы по программному обеспечению (10 624%, договор 21394787) и медицинскому оборудованию (микроскоп — 1 584%, договор 21523379).",
+   "unverified_numbers": [],
+   "latency_s": 5.09,
+   "tools": [
+    "find_price_anomalies"
+   ],
+   "error": null,
+   "answer_id": "c1ee1f3b-39a2-4e21-a86e-85e1dd8688ae",
+   "model": "gemini-3-flash-preview"
+  },
+  {
+   "id": "anomaly_2025_kk",
+   "question": "2025 жылы бағасы ЕНС ТРУ бойынша орташа өлшемді бағадан 30%-дан астам ауытқыған сатып алуларды тап",
+   "expected_type": "anomaly",
+   "got_type": "anomaly",
+   "facts": [
+    {
+     "name": "n_flagged",
+     "gt": 5838.0,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "2025 жылы 18 130 позиция талданды, оның ішінде 5 838 жағдайда (32,2%) бағаның орташа деңгейден 30%-дан астам ауытқуы анықталды. Жалпы ықтимал артық төлем сомасы 3,77 млрд теңгені құрады, ал ең жоғары ауытқу көрсеткіші 832 616%-ға жетті.",
+   "unverified_numbers": [],
+   "latency_s": 6.77,
+   "tools": [
+    "find_price_anomalies"
+   ],
+   "error": null,
+   "answer_id": "117358eb-79b4-4983-8990-b6ad78e7a59f",
+   "model": "gemini-3-flash-preview"
+  },
+  {
+   "id": "anomaly_customer",
+   "question": "Найди у заказчика 990740002243 закупки с ценой выше средневзвешенной по ЕНС ТРУ более чем на 30%",
+   "expected_type": "anomaly",
+   "got_type": "anomaly",
+   "facts": [
+    {
+     "name": "n_flagged",
+     "gt": 3839.0,
+     "found": true,
+     "in_verdict": true
+    }
+   ],
+   "verdict": "У заказчика РГП \"Больница МЦ УДП РК\" (БИН 990740002243) выявлено 3839 позиций договоров с ценой выше средневзвешенной по ЕНС ТРУ более чем на 30%. Суммарная переплата по выявленным аномальным позициям составляет 5 979 024 290.85 тенге. Максимальное отклонение цены за единицу превышает средневзвешенную в миллионы раз.",
+   "unverified_numbers": [],
+   "latency_s": 129.67,
+   "tools": [
+    "find_price_anomalies"
+   ],
+   "error": null,
+   "answer_id": "9e83d7f2-0e65-4c83-84b2-aed087421d51",
+   "model": "gemini-3.5-flash-lite"
+  },
+  {
+   "id": "fair_lot_1",
+   "question": "Оцени адекватность цены лота №82166119-ЗЦП2 относительно аналогичных контрактов других ведомств в идентичном городе поставки",
+   "expected_type": "fairness",
+   "got_type": "fairness",
+   "facts": [
+    {
+     "name": "target_price",
+     "gt": 1111.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "n_same_city",
+     "gt": 29.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "customer_bin",
+     "gt": "030440003698",
+     "found": true,
+     "in_verdict": false
+    }
+   ],
+   "verdict": "Цена лота №82166119-ЗЦП2 на поставку капусты составляет 1 111,00 ₸/кг, что на 393,0% превышает справедливую рыночную цену 225,36 ₸/кг (справедливый диапазон 192,05–314,60 ₸/кг по 29 сопоставимым контрактам в г. Астана). Зафиксировано значительное завышение стоимости закупки.",
+   "unverified_numbers": [],
+   "latency_s": 31.19,
+   "tools": [
+    "assess_fair_price"
+   ],
+   "error": null,
+   "answer_id": "596b4c41-6791-4a1f-94a4-977cb77e5569",
+   "model": "gemini-3.8-flash"
+  },
+  {
+   "id": "fair_lot_2",
+   "question": "Оцени справедливость цены лота 72540644-ЗЦП1 в сравнении с контрактами других заказчиков в том же городе",
+   "expected_type": "fairness",
+   "got_type": "fairness",
+   "facts": [
+    {
+     "name": "target_price",
+     "gt": 222300.0,
+     "found": true,
+     "in_verdict": true
+    },
+    {
+     "name": "enstru",
+     "gt": "381129.000.000000",
+     "found": true,
+     "in_verdict": false
+    }
+   ],
+   "verdict": "Цена лота 72540644-ЗЦП1 составляет 222 300,00 тенге, что на 67,82% ниже справедливой цены (690 715,38 тенге), рассчитанной по 66 аналогичным контрактам в г. Астана. Вердикт — значительное занижение: цена находится существенно ниже межквартильного диапазона справедливости [349 418,15 – 1 333 477,57] тенге.",
+   "unverified_numbers": [],
+   "latency_s": 103.96,
+   "tools": [
+    "assess_fair_price"
+   ],
+   "error": null,
+   "answer_id": "469dfaca-0ac9-467f-86af-9cd2a6744032",
+   "model": "gemini-3.6-flash"
+  },
+  {
+   "id": "volume_2026",
+   "question": "Выяви нетипичное завышение количества ТРУ в 2026 году по сравнению с предыдущими годами",
+   "expected_type": "volume",
+   "got_type": "volume",
+   "facts": [
+    {
+     "name": "n_pairs",
+     "gt": 5877.0,
+     "found": true,
+     "in_verdict": false
+    }
+   ],
+   "verdict": "В планах закупок на 2026 год выявлено 260 позиций ТРУ с нетипичным завышением количества в 2,0 и более раз по сравнению с 2024–2025 годами. Совокупный прирост суммы по аномальным позициям составил 1 962 011 475,06 тенге. Наибольшие суммы прироста отмечены по услугам содержания зданий у РГП «Больница МЦ УДП РК» (+98,1 млн тг, рост в 2,75 раза) и по дизельному топливу у РГП «Дирекция государственных резиденций» (+86,9 млн тг, рост объема в 2,62 раза).",
+   "unverified_numbers": [],
+   "latency_s": 102.3,
+   "tools": [
+    "detect_volume_anomalies"
+   ],
+   "error": null,
+   "answer_id": "3ff530b6-c119-4604-a15e-7b89b32d2f46",
+   "model": "gemini-3.6-flash"
+  },
+  {
+   "id": "volume_customer",
+   "question": "Есть ли у заказчика 990740002243 нетипичный рост количества закупаемых ТРУ в плане 2026 года относительно 2024–2025?",
+   "expected_type": "volume",
+   "got_type": "volume",
+   "facts": [
+    {
+     "name": "n_pairs",
+     "gt": 852.0,
+     "found": true,
+     "in_verdict": false
+    }
+   ],
+   "verdict": "Да, у заказчика РГП «Больница МЦ УДП РК» (БИН 990740002243) выявлен нетипичный рост закупаемых объёмов по 88 позициям плана на 2026 год относительно 2024–2025 годов. Общий суммарный прирост завышения составил 849 987 406,46 тенге. Например, по «Услугам по содержанию зданий» объём вырос в 2,75 раза (с 4 до 11 услуг, прирост 98,15 млн тенге), а по «Наборам реагентов» — в 6,44 раза (с 50,5 до 325 ед., прирост 73,32 млн тенге).",
+   "unverified_numbers": [],
+   "latency_s": 6.46,
+   "tools": [
+    "detect_volume_anomalies"
+   ],
+   "error": null,
+   "answer_id": "bafb632a-2d30-4c56-a2b5-f4aff2e5a5b5",
+   "model": "gemini-3.6-flash"
+  }
+ ]
+}

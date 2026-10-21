@@ -1,0 +1,58 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      OPENAI_COMPAT_BASE_URL: ${OPENAI_COMPAT_BASE_URL_DOCKER:-http://ollama:11434/v1}
+    depends_on:
+      db: { condition: service_healthy }
+    ports:
+      - "${API_PORT:-8000}:8000"
+
+  # Инкрементальная синхронизация с OWS v3 (каждый час; SLA ≤ 24ч)
+  scheduler:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      SYNC_INTERVAL_SECONDS: "3600"
+    command: ["python", "-m", "app.ingest.scheduler"]
+    restart: unless-stopped
+    depends_on:
+      db: { condition: service_healthy }
+
+  web:
+    build: ./frontend
+    depends_on: [api]
+    ports:
+      - "8080:80"
+
+  # On-prem LLM (опционально): docker compose --profile local-llm up
+  ollama:
+    image: ollama/ollama:0.6.8
+    profiles: ["local-llm"]
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+
+volumes:
+  pgdata:
+  ollama:
